@@ -9,7 +9,7 @@
   var U='https://script.google.com/macros/s/AKfycbxnqLsUdlohQiO3Q1g3hxSCuk4FFRHPwbJ07JS2DHEV5ofF4emUhZWD_-Hs0a_naI3m/exec?app=1';
   function show(t){document.open();document.write(t);document.close()}
   var c=null;try{c=localStorage.getItem('app_html')}catch(e){}
-  if(c&&c.indexOf('<!DOCTYPE html>')===0)return show(c);
+  if(c&&c.indexOf('<!DOCTYPE html>')===0){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){show(c)});else show(c);return}
   function go(){
     fetch(U,{credentials:'omit'}).then(function(r){return r.text()}).then(function(t){
       if(t.indexOf('<!DOCTYPE html>')!==0)throw 0;
